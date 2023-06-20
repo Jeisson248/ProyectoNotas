@@ -1,3 +1,6 @@
 <?php
-// Pagina Principal para ingresar 
+
+//pagina primcipal
+
+
 ?>
