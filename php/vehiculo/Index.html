@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Automoviles</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+        }
+
+        h2 {
+            color: #572af9;
+        }
+
+        form {
+            width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #83e3e3;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="text"]:hover,
+        input[type="number"]:hover,
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border-color: red;
+        }
+
+        .error {
+            color: red;
+        }
+
+        button[type="submit"] {
+            display: block;
+            margin-top: 10px;
+            padding: 8px 12px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .resultado {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+
+        /* Estilos adicionales */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilos para los mensajes de error */
+        .error {
+            color: red;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var form = document.getElementById("formulario");
+            var nombreInput = document.getElementById("nombre");
+            var cantidadInput = document.getElementById("cantidad");
+            var precioInput = document.getElementById("precio");
+            var errorDiv = document.getElementById("errorDiv");
+
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+                var nombre = nombreInput.value;
+                var cantidad = parseFloat(cantidadInput.value);
+                var precio = parseFloat(precioInput.value);
+
+                errorDiv.innerHTML = "";
+
+                if (nombre.trim() === "") {
+                    errorDiv.innerHTML += "<p class='error'>El nombre del vendedor es requerido</p>";
+                }
+
+                if (isNaN(cantidad) || cantidad <= 0) {
+                    errorDiv.innerHTML += "<p class='error'>La cantidad de automoviles vendidos debe ser un numero positivo</p>";
+                }
+
+                if (isNaN(precio) || precio <= 0) {
+                    errorDiv.innerHTML += "<p class='error'>El precio total de los automoviles vendidos debe ser un numero positivo</p>";
+                }
+
+                if (errorDiv.innerHTML === "") {
+                    // Si no hay errores, puedes enviar el formulario aquí
+                    form.submit();
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h2 style="text-align: center;">Formulario de ventas de automoviles</h2>
+        <form id="formulario" method="post" action="calcular_salario.php">
+            <label for="nombre">Nombre del vendedor:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <label for="cantidad">Cantidad de automoviles vendidos:</label>
+            <input type="number" id="cantidad" name="cantidad" required>
+            <label for="precio">Precio total de los automoviles vendidos:</label>
+            <input type="number" id="precio" name="precio" required>
+            <div id="errorDiv"></div>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
+
+
+</html>
+
+</html>
