@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lanzamiento de Dado</title>
+    <script>
+        function lanzarDado() {
+            var valoresDado = [1, 2, 3, 4, 5, 6];
+            var indice = Math.floor(Math.random() * valoresDado.length);
+            return valoresDado[indice];
+        }
+
+        function mostrarResultado() {
+            var resultado = lanzarDado();
+            var resultadoTexto = "El resultado del lanzamiento del dado es: " + resultado;
+            document.getElementById("resultado").innerHTML = resultadoTexto;
+        }
+    </script>
+</head>
+<body>
+    <h1>Lanzamiento de Dado</h1>
+    <button onclick="mostrarResultado()">Lanzar Dado</button>
+    <p id="resultado"></p>
+</body>
+</html>
